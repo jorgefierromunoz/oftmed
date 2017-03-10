@@ -1,0 +1,34 @@
+<% if notice != nil %>
+<div class="alert alert-warning alert-dismissable">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+<p id="notice"><%= notice %></p>
+</div>
+<% end %>
+<h3>Servicios</h3>
+<%= link_to '+ Agregar Servicio', new_servicio_path %>
+<table  class="table table-hover">
+  <thead>
+    <tr>
+      <th>Servicio</th>
+      <th>Descripcion</th>
+      <th>Editar</th>
+      <th>Eliminar</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @servicios.each do |servicio| %>
+      <tr>
+        <td><%= servicio.servicio %></td>
+        <td><%= servicio.descripcion %></td>
+       
+        <td><%= link_to 'Editar', edit_servicio_path(servicio) %></td>
+        <td><%= link_to 'Eliminar', servicio, method: :delete, data: { confirm: '¿Estás seguro que desea eliminar este registro?', id: servicio.id, controlador: 'servicios' }, class: 'eliminarbtn' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
